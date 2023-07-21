@@ -1,9 +1,6 @@
 import Navigationbar from "../../components/Navigationbar";
-import Footer from "../../components/Footer";
 import {useClerk} from "@clerk/nextjs";
-import {CircularProgress, Grid, TextField} from "@mui/material";
-import useApi from "../../components/useApi";
-import {HandleErrorWithToast, SuccessToast} from "../../components/Toasts";
+import {Grid, TextField} from "@mui/material";
 import {GetServerSideProps} from "next";
 import {buildClerkProps, clerkClient, getAuth} from "@clerk/nextjs/server";
 
@@ -28,59 +25,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 export default function Profil({memberId, roles}) {
   const clerk = useClerk();
-  const {apiClient, hooks} = useApi();
-  const {data: member, isLoading} = hooks.useQuery("/api/members/:memberId/private", {params: {memberId}});
-
-  const onSaveName = async (e) => {
-    try {
-      await apiClient.post("/api/members/change-name", {
-        name: e.target.value,
-        memberId: memberId
-      })
-      SuccessToast("Lagret!");
-    } catch (e) {
-      HandleErrorWithToast(e);
-    }
-  }
-  
-  const onSaveLocation = async (e) => {
-    try {
-      await apiClient.post("/api/members/change-location", {
-        location: e.target.value,
-        memberId: memberId
-      })
-
-      SuccessToast("Lagret!");
-    } catch (e) {
-      HandleErrorWithToast(e);
-    }
-  }
-
-  const onSaveEmail = async (e) => {
-    try {
-      await apiClient.post("/api/members/change-email", {
-        email: e.target.value,
-        memberId: memberId
-      })
-
-      SuccessToast("Lagret!");
-    } catch (e) {
-      HandleErrorWithToast(e);
-    }
-  }
-
-  const onSavePassword = async (e) => {
-    try {
-      await apiClient.post("/api/members/change-password", {
-        password: e.target.value,
-        memberId: memberId
-      })
-
-      SuccessToast("Lagret!");
-    } catch (e) {
-      HandleErrorWithToast(e);
-    }
-  }
   
   return (
     <>
@@ -90,35 +34,30 @@ export default function Profil({memberId, roles}) {
         onLogin={() => clerk.openSignIn()}
         onLogout={() => clerk.signOut()}
       />
-      {isLoading
-        ? <CircularProgress />
-        : <>
+      <>
           <Grid container spacing={2} minHeight={500} justifyContent={"center"}>
             <Grid item xs={8}>
-                <h1>Hi {member.name}</h1>
+                <h1>Hi Jane Doe!</h1>
             </Grid>
             <Grid item xs={8}>
               <TextField
                 fullWidth name={"name"}
-                defaultValue={member.name}
+                defaultValue={"Jane Doe"}
                 placeholder={"Navn"}
-                onBlur={onSaveName}
               />
             </Grid>
             <Grid item xs={8}>
               <TextField
                 fullWidth name={"email"}
-                defaultValue={member.email}
+                defaultValue={"email@email.com"}
                 placeholder={"E-post"}
-                onBlur={onSaveEmail}
               />
             </Grid>
             <Grid item xs={8}>
                 <TextField
                   fullWidth name={"location"}
-                  defaultValue={member.location}
+                  defaultValue={"The world"}
                   placeholder={"Sted"}
-                  onBlur={onSaveLocation}
                 />
             </Grid>
             <Grid item xs={8}>
@@ -127,12 +66,10 @@ export default function Profil({memberId, roles}) {
                 defaultValue={""}
                 placeholder={"Sett nytt passord"}
                 type={"newPassword"}
-                onBlur={onSavePassword}
               />
             </Grid>
           </Grid>
-        </>}
-      <Footer />
+        </>
     </>
   )
 }

@@ -3,9 +3,6 @@ import { useSignUp } from "@clerk/nextjs";
 
 import {buildClerkProps, clerkClient, getAuth} from "@clerk/nextjs/server";
 import Navigationbar from "../components/Navigationbar";
-import LandingRegister from "../components/LandingRegister";
-import IconView from "../components/IconView";
-import Footer from "../components/Footer";
 import {HandleErrorWithToast, SuccessToast} from "../components/Toasts";
 
 export const runtime = 'experimental-edge';
@@ -46,12 +43,6 @@ export default function Home({memberId, roles}) {
         onLogin={() => clerk.openSignIn()}
         onLogout={() => clerk.signOut()} 
       />
-
-      <LandingRegister onSignup={postRegisterUser} signedIn={!!memberId} />
-
-      <IconView />
-      <Footer />
-
     </>
   );
 }

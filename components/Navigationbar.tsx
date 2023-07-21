@@ -52,7 +52,7 @@ const Navigationbar = ({signedIn, onLogout, onLogin, roles}: Props) => {
     <>
       <AppBarWrapper color="primary" position="static" style={{}}>
         <Toolbar>
-          <TitleWrapper>HAPPYDOGS</TitleWrapper>
+          <TitleWrapper>Hello world</TitleWrapper>
           <Box flexGrow={1} />
           <AppBarActions>
             {signedIn ? <>
