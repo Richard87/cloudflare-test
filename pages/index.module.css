@@ -1,0 +1,107 @@
+/* Header Styles */
+.header {
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brandname {
+    color: #ff9900;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu li {
+    list-style: none;
+    margin-left: 10px;
+}
+
+/* Hero Styles */
+.hero {
+    width: 100%;
+    background-image: url('/heroimage2.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroContent {
+    background-color: rgba(255, 247, 236, 90%);
+    text-align: center;
+    padding: 61px 47px;
+    font-size: 41px;
+    margin-top: 118px;
+    margin-bottom: 118px;
+    max-width: 700px;
+}
+
+.heroContent h2 {
+    color: #6a3221;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    font-weight: lighter;
+}
+.heroContent h2 em {
+    color: #f47473;
+    font-style: normal;
+}
+
+.email-input,
+.password-input {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 200px;
+}
+
+.continue-button {
+    background-color: #002244;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Block Styles */
+.block {
+    background-color: #f4ede2;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    align-items: center;
+}
+
+.card {
+    text-align: center;
+    background: white;
+    margin: 0;
+}
+.card p {
+    display: block;
+    background: #022459;
+    text-align: center;
+    padding: 5px;
+    color: white;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #002244;
+    color: white;
+    padding: 20px;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-column {
+    width: 25%;
+}
